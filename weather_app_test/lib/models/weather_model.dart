@@ -6,14 +6,12 @@ class WeatherForecastModel {
   WeatherForecastModel({this.location, this.current, this.forecast});
 
   WeatherForecastModel.fromJson(Map<String, dynamic> json) {
-    location = json['location'] != null
-        ? Location.fromJson(json['location'])
-        : null;
+    location =
+        json['location'] != null ? Location.fromJson(json['location']) : null;
     current =
         json['current'] != null ? Current.fromJson(json['current']) : null;
-    forecast = json['forecast'] != null
-        ? Forecast.fromJson(json['forecast'])
-        : null;
+    forecast =
+        json['forecast'] != null ? Forecast.fromJson(json['forecast']) : null;
   }
 
   Map<String, dynamic> toJson() {
@@ -546,7 +544,9 @@ class Hour {
     data['uv'] = uv;
     return data;
   }
-  class Sport {
+}
+
+class Sport {
   String? stadium;
   num? country;
   String? region;

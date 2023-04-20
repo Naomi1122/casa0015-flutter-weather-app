@@ -546,4 +546,40 @@ class Hour {
     data['uv'] = uv;
     return data;
   }
+  class Sport {
+  String? stadium;
+  num? country;
+  String? region;
+  String? tournament;
+  String? start;
+  String? match;
+
+  Sport({
+    this.stadium,
+    this.country,
+    this.region,
+    this.tournament,
+    this.start,
+    this.match,
+  });
+
+  Sport.fromJson(Map<String, dynamic> json) {
+    stadium = json['stadium'];
+    country = json['country'];
+    region = json['region'];
+    tournament = json['tournament'];
+    start = json['start'];
+    match = json['match'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['stadium'] = stadium;
+    data['country'] = country;
+    data['region'] = region;
+    data['tournment'] = tournament;
+    data['start'] = start;
+    data['match'] = match;
+    return data;
+  }
 }

@@ -5,6 +5,7 @@ import 'package:weathet_app/ui/widgets/main_screen/main_screen_model.dart';
 import 'package:weathet_app/utils/constants.dart';
 import 'package:weathet_app/ui/widgets/main_screen/header_widget.dart';
 import 'package:weathet_app/ui/widgets/main_screen/cityinfo_widget.dart';
+import 'package:weathet_app/ui/widgets/main_screen/barometer_widget.dart';
 
 class MainScreenWidget extends StatelessWidget {
   const MainScreenWidget({Key? key}) : super(key: key);
@@ -14,10 +15,10 @@ class MainScreenWidget extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 246, 211, 211),
-      // appBar: AppBar(
-      //   title: Text('My App'),
-      //   // add any other necessary properties here
-      // ),
+      appBar: AppBar(
+        title: Text('My Weather App'),
+        backgroundColor: Color.fromARGB(249, 247, 188, 241),
+      ),
       body:
           model.forecastObject?.location?.name != null && model.loading == false
               ? _ViewWidget()
@@ -64,11 +65,7 @@ class _ViewWidget extends StatelessWidget {
                         SizedBox(height: 70),
                         CityInfoWidget(),
                         SizedBox(height: 15),
-                        BarometerWidget(),
-                        SizedBox(height: 15),
                         CarouselWidget(),
-                        // SizedBox(height: 15),
-                        // WindWidget(),
                       ]),
                 )
               : Center(
@@ -80,235 +77,6 @@ class _ViewWidget extends StatelessWidget {
     );
   }
 }
-
-// class HeaderWidget extends StatelessWidget {
-//   const HeaderWidget({Key? key}) : super(key: key);
-
-//   @override
-//   Widget build(BuildContext context) {
-//     final model = context.read<MainScreenModel>();
-//     return Padding(
-//       padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 20),
-//       child: Row(
-//         children: [
-//           Expanded(
-//             child: TextField(
-//               onChanged: ((value) => model.cityName = value),
-//               onSubmitted: (_) => model.onSubmitSearch(),
-//               decoration: InputDecoration(
-//                 filled: true,
-//                 fillColor: bgGreyColor.withAlpha(235),
-//                 hintText: 'Search',
-//                 hintStyle: TextStyle(color: Colors.blue.withAlpha(135)),
-//                 prefixIcon: IconButton(
-//                   icon: const Icon(Icons.search, color: Colors.blue),
-//                   onPressed: model.onSubmitSearch,
-//                 ),
-//                 border: const OutlineInputBorder(
-//                   borderSide: BorderSide.none,
-//                   borderRadius: BorderRadius.all(Radius.circular(15)),
-//                 ),
-//               ),
-//             ),
-//           ),
-//           const SizedBox(width: 10),
-//           Container(
-//             decoration: BoxDecoration(
-//               borderRadius: BorderRadius.circular(15),
-//               color: bgGreyColor.withAlpha(235),
-//             ),
-//             child: IconButton(
-//               padding: const EdgeInsets.all(12),
-//               iconSize: 26,
-//               onPressed: model.onSubmitLocate,
-//               icon: const Icon(Icons.location_on_outlined, color: Colors.green),
-//             ),
-//           ),
-//         ],
-//       ),
-//     );
-//   }
-// }
-
-// class CityInfoWidget extends StatelessWidget {
-//   const CityInfoWidget({Key? key}) : super(key: key);
-
-//   @override
-//   Widget build(BuildContext context) {
-//     final model = context.read<MainScreenModel>();
-//     final snapshot = model.forecastObject;
-//     var city = snapshot!.location?.name;
-//     var temp = snapshot.current?.tempC!.round();
-//     var feelTemp = snapshot.current?.feelslikeC;
-//     var windDegree = snapshot.current?.windDegree;
-//     var url =
-//         'https://${((snapshot.current!.condition!.icon).toString().substring(2)).replaceAll("64", "128")}';
-
-//     return Column(
-//       crossAxisAlignment: CrossAxisAlignment.center,
-//       children: [
-//         Image.network(url, scale: 1.2),
-//         const SizedBox(height: 8),
-//         Row(
-//           mainAxisAlignment: MainAxisAlignment.center,
-//           children: [
-//             appText(
-//               size: 30,
-//               text: '$city',
-//               isBold: FontWeight.bold,
-//               color: primaryColor,
-//             ),
-//             RotationTransition(
-//               turns: AlwaysStoppedAnimation(windDegree! / 360),
-//               child: const Icon(Icons.north, color: primaryColor),
-//             )
-//           ],
-//         ),
-//         Row(
-//           crossAxisAlignment: CrossAxisAlignment.center,
-//           mainAxisAlignment: MainAxisAlignment.center,
-//           children: [
-//             appText(
-//               size: 70,
-//               text: '$temp°',
-//             ),
-//             appText(size: 20, text: '$feelTemp°', color: darkGreyColor),
-//           ],
-//         ),
-//       ],
-//     );
-//   }
-// }
-
-class BarometerWidget extends StatelessWidget {
-  const BarometerWidget({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    final model = context.read<MainScreenModel>();
-    final snapshot = model.forecastObject;
-    var temperature = snapshot!.current?.tempC;
-    var speed = snapshot.current?.windKph;
-    var humidity = snapshot.current?.humidity;
-    var pressure = snapshot.current?.pressureMb;
-    var visKm = snapshot.current?.visKm;
-
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 20),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(left: 10),
-            child: appText(
-              size: 20,
-              color: primaryColor.withOpacity(.8),
-              text: 'Barometer',
-              isBold: FontWeight.bold,
-            ),
-          ),
-          Card(
-            color: bgGreyColor,
-            elevation: 0,
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(11)),
-            child: SizedBox(
-              width: double.maxFinite,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  customListTile(
-                    first: 'Temperature:',
-                    second: ' $temperature °C',
-                    icon: Icons.thermostat,
-                    iconColor: Colors.orange,
-                  ),
-                  customListTile(
-                    first: 'Humidity:',
-                    second: ' $humidity %',
-                    icon: Icons.water_drop_outlined,
-                    iconColor: Colors.blueGrey,
-                  ),
-                  customListTile(
-                    first: 'Pressure:',
-                    second: ' $pressure hPa',
-                    icon: Icons.speed,
-                    iconColor: Colors.red[300]!,
-                  ),
-                  customListTile(
-                    first: 'Visibility:',
-                    second: ' $visKm Km',
-                    icon: Icons.lens_blur,
-                    iconColor: Colors.red[300]!,
-                  ),
-                  customListTile(
-                    text: snapshot.current!.windDir!,
-                    first: 'Wind Speed:',
-                    second: ' $speed km/h',
-                    icon: Icons.air,
-                    iconColor: Colors.blue,
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-// class WindWidget extends StatelessWidget {
-//   const WindWidget({
-//     Key? key,
-//   }) : super(key: key);
-
-//   @override
-//   Widget build(BuildContext context) {
-//     final model = context.read<MainScreenModel>();
-//     final snapshot = model.forecastObject;
-//     var speed = snapshot!.current?.windKph;
-
-//     return Padding(
-//       padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 20),
-//       child: Column(
-//         crossAxisAlignment: CrossAxisAlignment.start,
-//         children: [
-//           Padding(
-//             padding: const EdgeInsets.only(left: 10),
-//             child: appText(
-//               size: 20,
-//               color: primaryColor.withOpacity(.8),
-//               text: 'Wind',
-//               isBold: FontWeight.bold,
-//             ),
-//           ),
-//           Card(
-//             color: bgGreyColor,
-//             elevation: 0,
-//             shape:
-//                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(11)),
-//             child: SizedBox(
-//               width: double.maxFinite,
-//               child: Column(
-//                 crossAxisAlignment: CrossAxisAlignment.start,
-//                 children: [
-//                   customListTile(
-//                     text: snapshot.current!.windDir!,
-//                     first: 'Speed:',
-//                     second: ' $speed km/h',
-//                     icon: Icons.air,
-//                     iconColor: Colors.blue,
-//                   ),
-//                 ],
-//               ),
-//             ),
-//           ),
-//         ],
-//       ),
-//     );
-//   }
-// }
 
 class CarouselWidget extends StatelessWidget {
   const CarouselWidget({

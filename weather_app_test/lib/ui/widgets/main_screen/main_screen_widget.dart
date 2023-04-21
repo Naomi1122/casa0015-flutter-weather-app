@@ -5,10 +5,42 @@ import 'package:weathet_app/ui/widgets/main_screen/main_screen_model.dart';
 import 'package:weathet_app/utils/constants.dart';
 import 'package:weathet_app/ui/widgets/main_screen/header_widget.dart';
 import 'package:weathet_app/ui/widgets/main_screen/cityinfo_widget.dart';
-import 'package:weathet_app/ui/widgets/main_screen/barometer_widget.dart';
+import 'package:weathet_app/ui/widgets/sub_pages/setting_widget.dart';
+import 'package:weathet_app/ui/widgets/sub_pages/favourite_widget.dart';
 
-class MainScreenWidget extends StatelessWidget {
+class MainScreenWidget extends StatefulWidget {
   const MainScreenWidget({Key? key}) : super(key: key);
+
+  @override
+  _MainScreenWidgetState createState() => _MainScreenWidgetState();
+}
+
+class _MainScreenWidgetState extends State<MainScreenWidget> {
+  int _selectedIndex = 0;
+
+  static const List<Widget> _widgetOptions = <Widget>[
+    HomePage(),
+    FavoritePage(),
+    SettingsPage(),
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+      if (index == 1) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => FavoritePage()),
+        );
+      } else if (index == 2) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => SettingsPage()),
+        );
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final model = context.watch<MainScreenModel>();
@@ -40,9 +72,9 @@ class MainScreenWidget extends StatelessWidget {
             label: 'Settings',
           ),
         ],
-        //currentIndex: _selectedIndex,
+        currentIndex: _selectedIndex,
         selectedItemColor: Colors.blue,
-        //onTap: _onItemTapped,
+        onTap: _onItemTapped,
       ),
     );
   }
@@ -138,5 +170,14 @@ class CarouselWidget extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+class HomePage extends StatelessWidget {
+  const HomePage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MainScreenWidget();
   }
 }

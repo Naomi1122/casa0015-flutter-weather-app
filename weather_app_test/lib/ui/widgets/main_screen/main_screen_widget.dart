@@ -3,10 +3,13 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:provider/provider.dart';
 import 'package:weathet_app/ui/widgets/main_screen/main_screen_model.dart';
 import 'package:weathet_app/utils/constants.dart';
+import 'package:weathet_app/utils/ui.dart';
 import 'package:weathet_app/ui/widgets/main_screen/header_widget.dart';
 import 'package:weathet_app/ui/widgets/main_screen/cityinfo_widget.dart';
 import 'package:weathet_app/ui/widgets/sub_pages/setting_widget.dart';
 import 'package:weathet_app/ui/widgets/sub_pages/favourite_widget.dart';
+import '7forecast_widget.dart';
+import 'AQI_widget.dart';
 
 class MainScreenWidget extends StatefulWidget {
   const MainScreenWidget({Key? key}) : super(key: key);
@@ -98,6 +101,10 @@ class _ViewWidget extends StatelessWidget {
                         CityInfoWidget(),
                         SizedBox(height: 15),
                         CarouselWidget(),
+                        SizedBox(height: 15),
+                        AQIWidget(),
+                        SizedBox(height: 15),
+                        ForecastWidget()
                       ]),
                 )
               : Center(

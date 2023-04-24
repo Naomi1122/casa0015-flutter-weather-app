@@ -2,11 +2,11 @@ import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
 
-import 'package:weathet_app/models/weather_model.dart';
+import 'package:weathet_app/models/sports_model.dart';
 import 'package:weathet_app/utils/constants.dart';
 import 'package:weathet_app/utils/location.dart';
 
-class WeatherApi {
+class SportsApi {
   final _client = HttpClient();
 
   static const _host =
@@ -21,14 +21,12 @@ class WeatherApi {
     }
   }
 
-  Future<WeatherForecastModel> fetchWeatherForecast({String? cityName}) async {
+  Future<SportsModel> fetchWeatherForecast({String? cityName}) async {
     Map<String, String> parameters;
     if (cityName != null && cityName.isNotEmpty) {
       parameters = {
         'key': Constants.WEATHER_APP_ID,
         'q': cityName,
-        'days': '7',
-        'aqi': 'yes'
       };
     } else {
       UserLocation location = UserLocation();
@@ -37,12 +35,10 @@ class WeatherApi {
       parameters = {
         'key': Constants.WEATHER_APP_ID,
         'q': fullLocation,
-        'days': '7',
-        'aqi': 'yes'
       };
     }
 
-    final url = _makeUri(Constants.WEATHER_FORECAST_PATH, parameters);
+    final url = _makeUri(Constants.SPORTS_PATH, parameters);
 
     log('request: ${url.toString()}');
     final request = await _client.getUrl(url);
@@ -52,6 +48,6 @@ class WeatherApi {
         .toList()
         .then((value) => value.join())
         .then<dynamic>((val) => jsonDecode(val)) as Map<String, dynamic>;
-    return WeatherForecastModel.fromJson(json);
+    return SportsModel.fromJson(json);
   }
 }

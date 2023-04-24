@@ -11,7 +11,7 @@ class BarometerWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final model = context.read<MainScreenModel>();
     final snapshot = model.forecastObject;
-    var temperature = snapshot!.current?.tempC;
+    var uv = snapshot!.current?.uv;
     var speed = snapshot.current?.windKph;
     var humidity = snapshot.current?.humidity;
     var pressure = snapshot.current?.pressureMb;
@@ -42,9 +42,9 @@ class BarometerWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   customListTile(
-                    first: 'Temperature:',
-                    second: ' $temperature °C',
-                    icon: Icons.thermostat,
+                    first: 'UV: ',
+                    second: ' $uv ',
+                    icon: Icons.wb_sunny,
                     iconColor: Colors.orange,
                   ),
                   customListTile(

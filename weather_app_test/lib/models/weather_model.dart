@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 class WeatherForecastModel {
   Location? location;
   Current? current;
@@ -98,6 +100,7 @@ class Current {
   num? uv;
   double? gustMph;
   double? gustKph;
+  Air_quality? air_quality;
 
   Current(
       {this.lastUpdatedEpoch,
@@ -122,7 +125,8 @@ class Current {
       this.visMiles,
       this.uv,
       this.gustMph,
-      this.gustKph});
+      this.gustKph,
+      this.air_quality});
 
   Current.fromJson(Map<String, dynamic> json) {
     lastUpdatedEpoch = json['last_updated_epoch'];
@@ -150,6 +154,9 @@ class Current {
     uv = json['uv'];
     gustMph = json['gust_mph'];
     gustKph = json['gust_kph'];
+    air_quality = json['air_quality'] != null
+        ? Air_quality.fromJson(json['air_quality'])
+        : null;
   }
 
   Map<String, dynamic> toJson() {
@@ -179,6 +186,50 @@ class Current {
     data['uv'] = uv;
     data['gust_mph'] = gustMph;
     data['gust_kph'] = gustKph;
+    if (air_quality != null) {
+      data['air_quality'] = condition!.toJson();
+    }
+    return data;
+  }
+}
+
+class Air_quality {
+  double? co;
+  double? o3;
+  double? no2;
+  double? so2;
+  double? pm2_5;
+  double? pm10;
+  int? gb_defra_index;
+
+  Air_quality(
+      {this.co,
+      this.o3,
+      this.no2,
+      this.so2,
+      this.pm2_5,
+      this.pm10,
+      this.gb_defra_index});
+
+  Air_quality.fromJson(Map<String, dynamic> json) {
+    co = json['co'];
+    o3 = json['o3'];
+    no2 = json['no2'];
+    so2 = json['so2'];
+    pm2_5 = json['pm2_5'];
+    pm10 = json['pm10'];
+    gb_defra_index = json['gb-defra-index'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['co'] = co;
+    data['o3'] = o3;
+    data['no2'] = no2;
+    data['so2'] = so2;
+    data['pm2_5'] = pm2_5;
+    data['pm10'] = pm10;
+    data['gb-defra-index'] = gb_defra_index;
     return data;
   }
 }

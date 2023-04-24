@@ -6,7 +6,7 @@ This section has a short introduction to what the application is
 ## Features
 
 ## Screenshots
-###Main Screen
+### Main Screen
 ![Simulator Screen Shot - iPhone 14 Pro - 2023-04-24 at 19 22 30](https://user-images.githubusercontent.com/78373920/234083341-24f5e6d8-6a44-44fc-b05e-44a6c6888b8c.png)
 ![Simulator Screen Shot - iPhone 14 Pro - 2023-04-24 at 19 23 07](https://user-images.githubusercontent.com/78373920/234083451-bf82612d-c6b2-488e-9b1c-b26ef7a51252.png)
 ![Simulator Screen Shot - iPhone 14 Pro - 2023-04-24 at 19 23 18](https://user-images.githubusercontent.com/78373920/234083505-f0a1baa5-dfb5-4f00-8fdc-1f9eddce4f2e.png)

@@ -24,7 +24,7 @@ class _MainScreenWidgetState extends State<MainScreenWidget> {
   static const List<Widget> _widgetOptions = <Widget>[
     MainScreenWidget(),
     FavoritePage(),
-    SettingsPage(),
+    SettingPage(),
   ];
 
   void _onItemTapped(int index) {
@@ -38,7 +38,7 @@ class _MainScreenWidgetState extends State<MainScreenWidget> {
       } else if (index == 2) {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => SettingsPage()),
+          MaterialPageRoute(builder: (context) => SettingPage()),
         );
       }
     });
@@ -72,7 +72,7 @@ class _MainScreenWidgetState extends State<MainScreenWidget> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),
-            label: 'Settings',
+            label: 'Map',
           ),
         ],
         currentIndex: _selectedIndex,

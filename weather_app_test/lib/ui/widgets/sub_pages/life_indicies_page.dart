@@ -60,7 +60,7 @@ class _WeatherIndexWidgetState extends State<WeatherIndexWidget> {
 
   Future<void> fetchData() async {
     final response = await http.get(Uri.parse(
-        'https://devapi.qweather.com/v7/indices/1d?type=1,2,5&location=BA333&key=3750971dc4f04622ad1ee2f8757e16ae&lang=en'));
+        'https://devapi.qweather.com/v7/indices/1d?type=1,2,5&location=BA333&key=API_KEY&lang=en'));
     if (response.statusCode == 200) {
       setState(() {
         data = json.decode(response.body);
@@ -121,7 +121,7 @@ class _WeatherIndexWidgetState extends State<WeatherIndexWidget> {
               ),
               SizedBox(height: 20),
               Container(
-                height: 380,
+                height: 400,
                 width: 350,
                 decoration: BoxDecoration(
                   color: Colors.orange,

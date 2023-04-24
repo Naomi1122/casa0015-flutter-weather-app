@@ -7,7 +7,7 @@ import 'package:weathet_app/utils/ui.dart';
 import 'package:weathet_app/ui/widgets/main_screen/header_widget.dart';
 import 'package:weathet_app/ui/widgets/main_screen/cityinfo_widget.dart';
 import 'package:weathet_app/ui/widgets/sub_pages/setting_widget.dart';
-import 'package:weathet_app/ui/widgets/sub_pages/favourite_widget.dart';
+import 'package:weathet_app/ui/widgets/sub_pages/life_indicies_page.dart';
 import '7forecast_widget.dart';
 import 'AQI_widget.dart';
 
@@ -22,7 +22,7 @@ class _MainScreenWidgetState extends State<MainScreenWidget> {
   int _selectedIndex = 0;
 
   static const List<Widget> _widgetOptions = <Widget>[
-    HomePage(),
+    MainScreenWidget(),
     FavoritePage(),
     SettingsPage(),
   ];
@@ -67,8 +67,8 @@ class _MainScreenWidgetState extends State<MainScreenWidget> {
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.favorite),
-            label: 'Favorites',
+            icon: Icon(Icons.event),
+            label: 'Life',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),

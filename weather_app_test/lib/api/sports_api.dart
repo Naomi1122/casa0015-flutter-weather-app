@@ -21,7 +21,7 @@ class SportsApi {
     }
   }
 
-  Future<SportsModel> fetchWeatherForecast({String? cityName}) async {
+  Future<SportsModel> fetchSports({String? cityName}) async {
     Map<String, String> parameters;
     if (cityName != null && cityName.isNotEmpty) {
       parameters = {

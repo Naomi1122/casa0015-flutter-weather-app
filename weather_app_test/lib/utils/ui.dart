@@ -7,7 +7,8 @@ class UiUtils {
     var pb = ui.ParagraphBuilder(ui.ParagraphStyle(
       textAlign: TextAlign.center,
       fontSize: textSize,
-    ));
+    )
+    );
     pb.addText(text);
     pb.pushStyle(ui.TextStyle(color: color));
     var paragraph = pb.build()

@@ -85,11 +85,11 @@ class AQIWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final model = context.read<MainScreenModel>();
     final snapshot = model.forecastObject;
-    var co = snapshot!.current!.air_quality?.co;
-    var no2 = snapshot.current!.air_quality?.no2;
-    var o3 = snapshot.current!.air_quality?.o3;
-    var pm2_5 = snapshot.current!.air_quality?.pm2_5;
-    var pm10 = snapshot.current!.air_quality?.pm10;
+    var co = snapshot!.current!.air_quality?.co?.toStringAsFixed(2);
+    var no2 = snapshot.current!.air_quality?.no2?.toStringAsFixed(2);
+    var o3 = snapshot.current!.air_quality?.o3?.toStringAsFixed(2);
+    var pm2_5 = snapshot.current!.air_quality?.pm2_5?.toStringAsFixed(2);
+    var pm10 = snapshot.current!.air_quality?.pm10?.toStringAsFixed(2);
     var gb_defra_index = snapshot.current!.air_quality?.gb_defra_index;
 
     return Padding(
@@ -120,40 +120,53 @@ class AQIWidget extends StatelessWidget {
                       title: customListTile(
                         first: 'UK Defra Index: ',
                         second: ' $gb_defra_index ',
-                        icon: Icons.wb_sunny,
-                        iconColor: Colors.orange,
+                        icon: Icons.lens_blur_rounded,
+                        iconColor: Colors.blueGrey,
                       ),
                       initiallyExpanded: false,
                       children: [
-                        customListTile(
-                          first: 'CO: ',
-                          second: ' $co ',
-                          icon: Icons.wb_sunny,
-                          iconColor: Colors.orange,
+                        ListTile(
+                          title: Center(
+                            child: Text('CO: $co μg/m3'),
+                          ),
+                          // first: 'CO: ',
+                          // second: ' $co.toStringAsFixed(2) ',
+                          // icon: Icons.wb_sunny,
+                          // iconColor: Colors.orange,
                         ),
-                        customListTile(
-                          first: 'NO2:',
-                          second: ' $no2 ',
-                          icon: Icons.water_drop_outlined,
-                          iconColor: Colors.blueGrey,
+                        ListTile(
+                          title: Center(
+                            child: Text('NO2: $no2 μg/m3'),
+                          ),
+                          // first: 'NO2:',
+                          // second: ' $no2.toStringAsFixed(2) ',
+                          // icon: Icons.water_drop_outlined,
+                          // iconColor: Colors.blueGrey,
                         ),
-                        customListTile(
-                          first: 'O3:',
-                          second: ' $o3',
-                          icon: Icons.speed,
-                          iconColor: Colors.red[300]!,
+                        ListTile(
+                          title: Center(
+                            child: Text('O3: $o3 μg/m3'),
+                          ),
+                          // first: 'O3:',
+                          // second: ' $o3.toStringAsFixed(2)',
+                          // icon: Icons.speed,
+                          // iconColor: Colors.red[300]!,
                         ),
-                        customListTile(
-                          first: 'PM 2.5:',
-                          second: ' $pm2_5',
-                          icon: Icons.lens_blur,
-                          iconColor: Colors.red[300]!,
+                        ListTile(
+                          title: Center(
+                            child: Text('PM2.5: $pm2_5 μg/m3'),
+                          ),
+                          // first: 'PM 2.5:',
+                          // second: ' $pm2_5.toStringAsFixed(2)',
+                          // icon: Icons.lens_blur,
+                          // iconColor: Colors.red[300]!,
                         ),
-                        customListTile(
-                          first: 'PM 10:',
-                          second: ' $pm10',
-                          icon: Icons.air,
-                          iconColor: Colors.blue,
+                        ListTile(
+                          title: Center(
+                            child: Text('PM10: $pm10 μg/m3'),
+                          ),
+                          // icon: Icons.air,
+                          // iconColor: Colors.blue,
                         ),
                       ],
                     ),

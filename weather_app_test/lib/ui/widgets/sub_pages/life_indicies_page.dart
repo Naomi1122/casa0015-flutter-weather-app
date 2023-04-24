@@ -60,7 +60,7 @@ class _WeatherIndexWidgetState extends State<WeatherIndexWidget> {
 
   Future<void> fetchData() async {
     final response = await http.get(Uri.parse(
-        'https://devapi.qweather.com/v7/indices/1d?type=1,2,4&location=BA333&key=3750971dc4f04622ad1ee2f8757e16ae&lang=en'));
+        'https://devapi.qweather.com/v7/indices/1d?type=1,2,5&location=BA333&key=3750971dc4f04622ad1ee2f8757e16ae&lang=en'));
     if (response.statusCode == 200) {
       setState(() {
         data = json.decode(response.body);
@@ -75,12 +75,13 @@ class _WeatherIndexWidgetState extends State<WeatherIndexWidget> {
   Widget build(BuildContext context) {
     return isLoading
         ? CircularProgressIndicator()
-        : Column(
+        : SingleChildScrollView(
+            child: Column(
             children: [
               SizedBox(height: 20),
               Container(
-                height: 200,
-                width: 200,
+                height: 380,
+                width: 350,
                 decoration: BoxDecoration(
                   color: Colors.blue,
                   borderRadius: BorderRadius.circular(10),
@@ -91,27 +92,37 @@ class _WeatherIndexWidgetState extends State<WeatherIndexWidget> {
                     Icon(Icons.sports_soccer, size: 40),
                     SizedBox(height: 10),
                     Text(
-                      'Sport',
+                      'Sport Index',
                       style:
                           TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(height: 7),
+                    Padding(
+                      padding: EdgeInsets.all(10),
+                      child: Text(
+                        'The sport index is to consider the impact of meteorological factors and the environment on the human body, including ultraviolet rays, wind, air pressure, temperature, light, rain, snow, sand and dust, etc., to provide suggestions on whether it is suitable for ordinary people to exercise.\nThe sport index is divided into 3 grades, the higher the grade, the less suitable for sports.',
+                        style: TextStyle(fontSize: 15, color: Colors.amber[50]),
+                      ),
                     ),
                     SizedBox(height: 10),
                     Text(
                       'Level: ${data['daily'][0]['level']}',
-                      style: TextStyle(fontSize: 16),
+                      style:
+                          TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                     ),
                     SizedBox(height: 10),
                     Text(
                       'Category: ${data['daily'][0]['category']}',
-                      style: TextStyle(fontSize: 16),
+                      style:
+                          TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                     ),
                   ],
                 ),
               ),
               SizedBox(height: 20),
               Container(
-                height: 200,
-                width: 200,
+                height: 380,
+                width: 350,
                 decoration: BoxDecoration(
                   color: Colors.orange,
                   borderRadius: BorderRadius.circular(10),
@@ -126,23 +137,33 @@ class _WeatherIndexWidgetState extends State<WeatherIndexWidget> {
                       style:
                           TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                     ),
+                    SizedBox(height: 7),
+                    Padding(
+                      padding: EdgeInsets.all(10),
+                      child: Text(
+                        'The car wash index is based on whether there is rain or snow in the past 12 hours and the next 48 hours, whether there is snow and muddy water on the road surface, whether it is easy to splash the car with muddy water, whether there is sand and dust and other weather conditions, to provide drivers and friends whether it is suitable for car washing weather index. \nThe car wash index is divided into 4 levels, the higher the level, the less suitable for car washing.',
+                        style: TextStyle(fontSize: 15, color: Colors.amber[50]),
+                      ),
+                    ),
                     SizedBox(height: 10),
                     Text(
                       'Level: ${data['daily'][1]['level']}',
-                      style: TextStyle(fontSize: 16),
+                      style:
+                          TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                     ),
                     SizedBox(height: 10),
                     Text(
                       'Category: ${data['daily'][1]['category']}',
-                      style: TextStyle(fontSize: 16),
+                      style:
+                          TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                     ),
                   ],
                 ),
               ),
               SizedBox(height: 20),
               Container(
-                height: 200,
-                width: 200,
+                height: 380,
+                width: 350,
                 decoration: BoxDecoration(
                   color: Colors.green,
                   borderRadius: BorderRadius.circular(10),
@@ -150,27 +171,37 @@ class _WeatherIndexWidgetState extends State<WeatherIndexWidget> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Icon(Icons.phishing, size: 40),
+                    Icon(Icons.beach_access, size: 40),
                     SizedBox(height: 10),
                     Text(
-                      'Fishing',
+                      'UV Index',
                       style:
                           TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(height: 7),
+                    Padding(
+                      padding: EdgeInsets.all(10),
+                      child: Text(
+                        'The UV index refers to the actual intensity of UV radiation when the sun is at its highest point in the sky on that day, which usually occurs in the four hours before or after solar noon, and can help people assess the possible damage caused by UV rays to the human body. \nThe UV index is generally represented by 0-11+, and the larger the value, the greater the harm of ultraviolet rays to the human body.',
+                        style: TextStyle(fontSize: 15, color: Colors.amber[50]),
+                      ),
                     ),
                     SizedBox(height: 10),
                     Text(
                       'Level: ${data['daily'][2]['level']}',
-                      style: TextStyle(fontSize: 16),
+                      style:
+                          TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                     ),
                     SizedBox(height: 10),
                     Text(
                       'Category: ${data['daily'][2]['category']}',
-                      style: TextStyle(fontSize: 16),
+                      style:
+                          TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                     ),
                   ],
                 ),
               ),
             ],
-          );
+          ));
   }
 }

@@ -40,7 +40,7 @@ The app is a visualized, high-precision, intelligent weather APP.
 
 ## Demo:
 
-[![IMAGE ALT TEXT HERE]([https://img.youtube.com/vi/ePo3tOuOHuI/0.jpg](https://github.com/Naomi1122/casa0015-flutter-weather-app/blob/main/img/Cityinfo.png))](https://youtu.be/jlXBLzwT2Mg)
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/jlXBLzwT2Mg/0.jpg)](https://youtu.be/jlXBLzwT2Mg)
 
 
 ## Get Started

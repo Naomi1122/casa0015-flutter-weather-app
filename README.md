@@ -1,9 +1,24 @@
 # Weather APP
 
-This is the Final assessment template for CASA0014 - Please use this template and edit the relevant sections to personalise.
-This section has a short introduction to what the application is
+The app is a visualized, high-precision, intelligent weather APP.
 
 ## Features
+- Show the real-time current weather information
+  - Hourly forecast weather
+  - Real-time air quality
+- Life activity indicies
+  - Sport
+  - Car wash
+  - UV
+- Show the global 7-day daily forecast weather
+- Search by city name to get weather information
+- Get information for current user location
+- Weather map overlayer options
+  - precipitation
+  - wind
+  - pressure
+  - clouds
+  - temperature
 
 ## Screenshots
 ### Main Screen

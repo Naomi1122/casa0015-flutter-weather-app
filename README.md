@@ -38,6 +38,10 @@ The app is a visualized, high-precision, intelligent weather APP.
 ### Weather Map
 <img width="400" alt="image" src="https://github.com/Naomi1122/casa0015-flutter-weather-app/blob/main/img/Precip.png"> <img width="400" alt="image" src="https://github.com/Naomi1122/casa0015-flutter-weather-app/blob/main/img/Wind.png"> <img width="400" alt="image" src="https://github.com/Naomi1122/casa0015-flutter-weather-app/blob/main/img/Pressure.png"> <img width="400" alt="image" src="https://github.com/Naomi1122/casa0015-flutter-weather-app/blob/main/img/Clouds.png"> <img width="400" alt="image" src="https://github.com/Naomi1122/casa0015-flutter-weather-app/blob/main/img/Temp.png">
 
+## Demo:
+
+[![IMAGE ALT TEXT HERE]([https://img.youtube.com/vi/ePo3tOuOHuI/0.jpg](https://github.com/Naomi1122/casa0015-flutter-weather-app/blob/main/img/Cityinfo.png))](https://youtu.be/jlXBLzwT2Mg)
+
 
 ## Get Started
 

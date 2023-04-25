@@ -41,7 +41,19 @@ The app is a visualized, high-precision, intelligent weather APP.
 
 ## Get Started
 
-Include a section that gives intructions on how to install the app or run it in Flutter.  What versions of the plugins are you assuming?  Maybe define a licence
+#### 1. [Setup Flutter](https://flutter.io/setup/)
+
+#### 2. Clone the repo
+
+```sh
+$ git clone https://github.com/Naomi1122/casa0015-flutter-weather-app.git
+$ cd weathet_app-master/
+```
+#### 3. Add API Keys
+1. https://www.weatherapi.com/
+2. https://openweathermap.org/
+3. https://dev.qweather.com/
+4. https://developers.google.com/maps/apis-by-platform
 
 ##  Contact Details
 
